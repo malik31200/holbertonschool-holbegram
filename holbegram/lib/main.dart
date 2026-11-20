@@ -1,6 +1,8 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'screens/login_screen.dart';
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -33,7 +35,10 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: LoginScreen(
+        emailController: TextEditingController(),
+        passwordController: TextEditingController(),
+      ),
     );
   }
 }
