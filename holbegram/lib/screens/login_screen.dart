@@ -1,7 +1,9 @@
 import 'package:material_ui/material_ui.dart';
 
+import '../methods/auth_methods.dart';
 import '../widgets/text_field.dart';
 import 'signup_screen.dart';
+
 
 class LoginScreen extends StatefulWidget {
   final TextEditingController emailController;
@@ -18,6 +20,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthMethode _authMethode = AuthMethode();
   bool _passwordVisible = true;
 
   @override
@@ -94,7 +97,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           Color.fromARGB(218, 226, 37, 24),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        String res = await _authMethode.login(
+                          email: widget.emailController.text,
+                          password: widget.passwordController.text,
+                        );
+
+                        print(res);
+                      },
                       child: Text(
                         'Log in',
                         style: TextStyle(color: Colors.white),
