@@ -4,7 +4,6 @@ import '../methods/auth_methods.dart';
 import '../widgets/text_field.dart';
 import 'signup_screen.dart';
 
-
 class LoginScreen extends StatefulWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
@@ -109,11 +108,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
                         if (res == 'success') {
                           messenger.showSnackBar(
-                            SnackBar(
-                              content: Text('Login'),
-                            ),
+                            SnackBar(content: Text('Login')),
                           );
-                        }                      },
+                        }
+                      },
                       child: Text(
                         'Log in',
                         style: TextStyle(color: Colors.white),

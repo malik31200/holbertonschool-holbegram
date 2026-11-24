@@ -2,7 +2,6 @@ import 'package:material_ui/material_ui.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'screens/login_screen.dart';
-import 'screens/upload_image_screen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,10 +18,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: AddPicture(
-        email: 'test@test.com',
-        password: '123456',
-        username: 'Malik',
+      home: LoginScreen(
+        emailController: TextEditingController(),
+        passwordController: TextEditingController(),
       ),
     );
   }
@@ -40,8 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
-    setState(() {
-    });
+    setState(() {});
   }
 
   @override

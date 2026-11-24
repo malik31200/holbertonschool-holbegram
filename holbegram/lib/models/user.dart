@@ -42,16 +42,16 @@ class Users {
     );
   }
 
-   Map<String, dynamic> toJson() => {
-      'uid': uid,
-      'email': email,
-      'username': username,
-      'bio': bio,
-      'photoUrl': photoUrl,
-      'followers': followers,
-      'following': following,
-      'posts': posts,
-      'saved': saved,
-      'searchKey': searchKey,
-    };
+  Map<String, dynamic> toJson() => {
+    'uid': uid,
+    'email': email,
+    'username': username,
+    'bio': bio,
+    'photoUrl': photoUrl,
+    'followers': followers,
+    'following': following,
+    'posts': posts,
+    'saved': saved,
+    'searchKey': searchKey,
+  };
 }

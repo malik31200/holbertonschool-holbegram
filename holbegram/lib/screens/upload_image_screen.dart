@@ -3,6 +3,8 @@ import 'dart:typed_data';
 import 'package:material_ui/material_ui.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../methods/auth_methods.dart';
+
 class AddPicture extends StatefulWidget {
   final String email;
   final String password;
@@ -20,7 +22,9 @@ class AddPicture extends StatefulWidget {
 }
 
 class _AddPictureState extends State<AddPicture> {
+  final AuthMethode _authMethode = AuthMethode();
   Uint8List? _image;
+  bool _isLoading = false;
 
   Future<void> selectImageFromGallery() async {
     final ImagePicker imagePicker = ImagePicker();
@@ -113,14 +117,50 @@ class _AddPictureState extends State<AddPicture> {
             SizedBox(height: 40),
 
             ElevatedButton(
-              onPressed: () {},
+              onPressed: _isLoading
+                  ? null
+                  : () async {
+                      setState(() {
+                        _isLoading = true;
+                      });
+
+                      final messenger = ScaffoldMessenger.of(context);
+                      try {
+                        String res = await _authMethode.signUpUser(
+                          email: widget.email,
+                          username: widget.username,
+                          password: widget.password,
+                          file: _image,
+                        );
+
+                        if (!mounted) return;
+
+                        if (res == 'success') {
+                          messenger.showSnackBar(
+                            SnackBar(content: Text('success')),
+                          );
+                        }
+                      } catch (e) {
+                        if (!mounted) return;
+
+                        messenger.showSnackBar(
+                          SnackBar(content: Text(e.toString())),
+                        );
+                      } finally {
+                        if (mounted) {
+                          setState(() {
+                            _isLoading = false;
+                          });
+                        }
+                      }
+                    },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red,
                 foregroundColor: Colors.white,
                 padding: EdgeInsets.symmetric(horizontal: 30, vertical: 12),
                 textStyle: TextStyle(fontSize: 24),
               ),
-              child: Text('Next'),
+              child: Text(_isLoading ? 'Loading...' : 'Next'),
             ),
           ],
         ),

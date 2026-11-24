@@ -3,6 +3,7 @@ import 'package:material_ui/material_ui.dart';
 import '../widgets/text_field.dart';
 
 import 'login_screen.dart';
+import 'upload_image_screen.dart';
 
 class SignUp extends StatefulWidget {
   final TextEditingController emailController;
@@ -133,7 +134,18 @@ class _SignUpState extends State<SignUp> {
                           Color.fromARGB(218, 226, 37, 24),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddPicture(
+                              email: widget.emailController.text,
+                              username: widget.usernameController.text,
+                              password: widget.passwordController.text,
+                            ),
+                          ),
+                        );
+                      },
                       child: Text(
                         'Sign up',
                         style: TextStyle(color: Colors.white),
@@ -165,7 +177,7 @@ class _SignUpState extends State<SignUp> {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(218, 226, 37, 24),
-                            ),
+                          ),
                         ),
                       ),
                     ],
