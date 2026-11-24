@@ -98,13 +98,22 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       onPressed: () async {
+                        final messenger = ScaffoldMessenger.of(context);
+
                         String res = await _authMethode.login(
                           email: widget.emailController.text,
                           password: widget.passwordController.text,
                         );
 
-                        print(res);
-                      },
+                        if (!mounted) return;
+
+                        if (res == 'success') {
+                          messenger.showSnackBar(
+                            SnackBar(
+                              content: Text('Login'),
+                            ),
+                          );
+                        }                      },
                       child: Text(
                         'Log in',
                         style: TextStyle(color: Colors.white),
