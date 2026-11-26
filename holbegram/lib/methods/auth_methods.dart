@@ -20,9 +20,14 @@ class AuthMethode {
       return 'Please fill all the fields';
     }
 
-    await _auth.signInWithEmailAndPassword(email: email, password: password);
-
-    return 'success';
+    try {
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      return 'success';
+    } on FirebaseAuthException catch (e) {
+      return e.message ?? e.code;
+    } catch (e) {
+      return e.toString();
+    }
   }
 
   Future<String> signUpUser({

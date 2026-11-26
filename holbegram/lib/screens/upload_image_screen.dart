@@ -1,9 +1,10 @@
 import 'dart:typed_data';
 
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../methods/auth_methods.dart';
+import 'home.dart';
 
 class AddPicture extends StatefulWidget {
   final String email;
@@ -138,6 +139,12 @@ class _AddPictureState extends State<AddPicture> {
                         if (res == 'success') {
                           messenger.showSnackBar(
                             SnackBar(content: Text('success')),
+                          );
+
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                                builder: (context) => const Home(),
+                            ),
                           );
                         }
                       } catch (e) {

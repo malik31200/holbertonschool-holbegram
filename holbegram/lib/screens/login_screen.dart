@@ -1,7 +1,8 @@
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 import '../methods/auth_methods.dart';
 import '../widgets/text_field.dart';
+import 'home.dart';
 import 'signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -100,15 +101,24 @@ class _LoginScreenState extends State<LoginScreen> {
                         final messenger = ScaffoldMessenger.of(context);
 
                         String res = await _authMethode.login(
-                          email: widget.emailController.text,
+                          email: widget.emailController.text.trim(),
                           password: widget.passwordController.text,
                         );
 
-                        if (!mounted) return;
+                        if (!context.mounted) return;
 
                         if (res == 'success') {
                           messenger.showSnackBar(
                             SnackBar(content: Text('Login')),
+                          );
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => const Home(),
+                            ),
+                          );
+                        } else {
+                          messenger.showSnackBar(
+                            SnackBar(content: Text(res)),
                           );
                         }
                       },

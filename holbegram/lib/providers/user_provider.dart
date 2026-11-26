@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
-
+import 'package:flutter/foundation.dart';
 import '../methods/auth_methods.dart';
 import '../models/user.dart';
 
-class UserProvider with ChangeNotiifier {
+class UserProvider with ChangeNotifier {
     Users? _user;
     final AuthMethode _authMethode = AuthMethode();
 
