@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../providers/user_provider.dart';
 import '../screens/pages/methods/post_storage.dart';
@@ -93,6 +94,34 @@ class _PostsState extends State<Posts> {
                             fit: BoxFit.cover,
                           ),
                         ),
+                      ),
+
+                      Row(
+                        children: [
+                          const Spacer(),
+                          IconButton(
+                            onPressed: () async {
+                              final uid =
+                                  FirebaseAuth.instance.currentUser!.uid;
+
+                              await FirebaseFirestore.instance
+                                  .collection('users')
+                                  .doc(uid)
+                                  .update({
+                                'saved': FieldValue.arrayUnion([
+                                  data['postId'],
+                                ]),
+                              });
+
+                              if (!context.mounted) return;
+
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text('Saved')),
+                              );
+                            },
+                            icon: const Icon(Icons.bookmark),
+                          ),
+                        ],
                       ),
                     ],
                   ),
