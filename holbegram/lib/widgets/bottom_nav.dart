@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/user_provider.dart';
 
 import '../screens/pages/feed.dart';
 import '../screens/pages/search.dart';
@@ -23,6 +26,8 @@ class _BottomNavState extends State<BottomNav> {
     super.initState();
 
     _pageController = PageController();
+
+    Provider.of<UserProvider>(context, listen: false).refreshUser();
   }
 
   @override

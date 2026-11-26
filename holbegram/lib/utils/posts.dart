@@ -60,6 +60,7 @@ class _PostsState extends State<Posts> {
                                 ),
                               ),
                             ),
+                            const SizedBox(width: 8),
                             Text(data['username']),
                             const Spacer(),
                             IconButton(
@@ -77,21 +78,20 @@ class _PostsState extends State<Posts> {
                               },
                               icon: const Icon(Icons.more_horiz),
                             ),
-                            SizedBox(child: Text(data['caption'])),
-                            const SizedBox(height: 10),
-
-                            Container(
-                              width: 350,
-                              height: 350,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                image: DecorationImage(
-                                  image: NetworkImage(data['postUrl']),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
                           ],
+                        ),
+                      ),
+                      SizedBox(child: Text(data['caption'])),
+                      const SizedBox(height: 10),
+                      Container(
+                        width: 350,
+                        height: 350,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          image: DecorationImage(
+                            image: NetworkImage(data['postUrl']),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ],
