@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AddImage extends StatelessWidget {
-    const AddImage({super.key});
+  const AddImage({super.key});
 
-    @override
-    Widget build(BuildContext context) {
-        return Scaffold();
-    }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
+  }
 }

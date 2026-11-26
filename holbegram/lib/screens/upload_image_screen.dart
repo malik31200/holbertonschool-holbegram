@@ -143,7 +143,7 @@ class _AddPictureState extends State<AddPicture> {
 
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                                builder: (context) => const Home(),
+                              builder: (context) => const Home(),
                             ),
                           );
                         }

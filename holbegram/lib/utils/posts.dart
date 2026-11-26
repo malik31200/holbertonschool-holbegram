@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/user_provider.dart';
+import '../screens/pages/methods/post_storage.dart';
 
 class Posts extends StatefulWidget {
   const Posts({super.key});
@@ -62,7 +63,14 @@ class _PostsState extends State<Posts> {
                             Text(data['username']),
                             const Spacer(),
                             IconButton(
-                              onPressed: () {
+                              onPressed: () async {
+                                await PostStorage().deletePost(
+                                  data['postId'],
+                                  '',
+                                );
+
+                                if (!context.mounted) return;
+
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(content: Text('Post Deleted')),
                                 );

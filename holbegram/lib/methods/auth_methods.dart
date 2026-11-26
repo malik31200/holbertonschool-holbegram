@@ -79,10 +79,10 @@ class AuthMethode {
     User currentUser = _auth.currentUser!;
 
     DocumentSnapshot snap = await _firestore
-      .collection('users')
-      .doc(currentUser.uid)
-      .get();
+        .collection('users')
+        .doc(currentUser.uid)
+        .get();
 
-      return Users.fromSnap(snap);
+    return Users.fromSnap(snap);
   }
 }

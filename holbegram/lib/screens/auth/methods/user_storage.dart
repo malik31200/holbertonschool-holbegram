@@ -39,7 +39,7 @@ class StorageMethods {
 
       throw Exception(
         'Cloudinary error: ${response.statusCode} - $responseData',
-        );
+      );
     }
   }
 }

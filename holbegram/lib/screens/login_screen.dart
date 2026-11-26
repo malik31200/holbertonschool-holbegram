@@ -117,9 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           );
                         } else {
-                          messenger.showSnackBar(
-                            SnackBar(content: Text(res)),
-                          );
+                          messenger.showSnackBar(SnackBar(content: Text(res)));
                         }
                       },
                       child: Text(
