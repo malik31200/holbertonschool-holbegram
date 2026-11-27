@@ -108,10 +108,10 @@ class _PostsState extends State<Posts> {
                                   .collection('users')
                                   .doc(uid)
                                   .update({
-                                'saved': FieldValue.arrayUnion([
-                                  data['postId'],
-                                ]),
-                              });
+                                    'saved': FieldValue.arrayUnion([
+                                      data['postId'],
+                                    ]),
+                                  });
 
                               if (!context.mounted) return;
 

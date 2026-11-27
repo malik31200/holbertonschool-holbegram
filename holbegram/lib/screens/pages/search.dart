@@ -41,7 +41,7 @@ class _SearchState extends State<Search> {
                 ),
               ),
             ),
-                        Expanded(
+            Expanded(
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection('posts')

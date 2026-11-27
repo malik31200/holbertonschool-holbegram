@@ -26,8 +26,7 @@ class Favorite extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
 
-          final List<dynamic> saved =
-              userSnapshot.data!.data()?['saved'] ?? [];
+          final List<dynamic> saved = userSnapshot.data!.data()?['saved'] ?? [];
 
           return StreamBuilder(
             stream: FirebaseFirestore.instance.collection('posts').snapshots(),
